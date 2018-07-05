@@ -1,0 +1,13 @@
+version: '2'
+services:
+    microserviceschatbotkahina-app:
+        image: microserviceschatbotkahina
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://microserviceschatbotkahina-mysql:3306/microserviceschatbotkahina?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    microserviceschatbotkahina-mysql:
+        extends:
+            file: mysql.yml
+            service: microserviceschatbotkahina-mysql
