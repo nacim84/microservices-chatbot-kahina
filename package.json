@@ -1,7 +1,7 @@
 {
-  "name": "microservices-chatbot-kahina",
+  "name": "microserviceschatbotkahina",
   "version": "0.0.0",
-  "description": "Description for microservicesChatbotKahina",
+  "description": "Description for microserviceschatbotkahina",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

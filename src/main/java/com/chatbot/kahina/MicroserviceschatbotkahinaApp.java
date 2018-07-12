@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
@@ -20,18 +21,19 @@ import java.util.Collection;
 
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
-public class MicroservicesChatbotKahinaApp {
+@EnableDiscoveryClient
+public class MicroserviceschatbotkahinaApp {
 
-    private static final Logger log = LoggerFactory.getLogger(MicroservicesChatbotKahinaApp.class);
+    private static final Logger log = LoggerFactory.getLogger(MicroserviceschatbotkahinaApp.class);
 
     private final Environment env;
 
-    public MicroservicesChatbotKahinaApp(Environment env) {
+    public MicroserviceschatbotkahinaApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes microservicesChatbotKahina.
+     * Initializes microserviceschatbotkahina.
      * <p>
      * Spring profiles can be configured with a program arguments --spring.profiles.active=your-active-profile
      * <p>
@@ -56,7 +58,7 @@ public class MicroservicesChatbotKahinaApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(MicroservicesChatbotKahinaApp.class);
+        SpringApplication app = new SpringApplication(MicroserviceschatbotkahinaApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";
@@ -81,5 +83,10 @@ public class MicroservicesChatbotKahinaApp {
             hostAddress,
             env.getProperty("server.port"),
             env.getActiveProfiles());
+
+        String configServerStatus = env.getProperty("configserver.status");
+        log.info("\n----------------------------------------------------------\n\t" +
+                "Config Server: \t{}\n----------------------------------------------------------",
+            configServerStatus == null ? "Not found or not setup for this application" : configServerStatus);
     }
 }

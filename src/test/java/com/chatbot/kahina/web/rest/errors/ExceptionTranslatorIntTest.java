@@ -1,6 +1,6 @@
 package com.chatbot.kahina.web.rest.errors;
 
-import com.chatbot.kahina.MicroservicesChatbotKahinaApp;
+import com.chatbot.kahina.MicroserviceschatbotkahinaApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = MicroservicesChatbotKahinaApp.class)
+@SpringBootTest(classes = MicroserviceschatbotkahinaApp.class)
 public class ExceptionTranslatorIntTest {
 
     @Autowired
